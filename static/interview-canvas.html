@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 无限画布 · 面试验收模式</title>
+  <link rel="icon" href="/static/images/wh-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/interview-canvas.css?v=2026.08.28.1790589384">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">WH</div><div><strong>AI 无限画布</strong><span>面试验收模式 · 本地 Mock</span></div></div>
+    <div class="toolbar">
+      <button data-action="demo" class="primary">加载验收示例</button>
+      <button data-action="add-image">+ 图片</button><button data-action="add-prompt">+ 提示词</button><button data-action="add-generator">+ 生成节点</button>
+      <button data-action="delete-edge">删除连接</button><button data-action="reset" class="danger">清空画布</button>
+    </div>
+    <div class="save-indicator"><span class="save-dot"></span><span id="saveText">已保存</span><span class="schema">schema v2</span></div>
+  </header>
+  <main id="board" class="board" aria-label="无限画布">
+    <div class="grid"></div><div id="world" class="world"><svg id="edges" class="edges" aria-hidden="true"></svg></div>
+    <div id="emptyState" class="empty-state"><div class="empty-icon">✦</div><h1>从一个可验证的生成链路开始</h1><p>创建图片、提示词和生成节点，连接后运行本地 Mock。节点、任务、资产和视口都会保存到浏览器。</p><button data-action="demo" class="primary large">加载验收示例</button></div>
+    <div id="linkHint" class="link-hint" hidden>已选择输出端口，请点击目标输入端口完成连接</div>
+    <div class="zoom-hud"><button data-action="zoom-out" aria-label="缩小">−</button><span id="zoomText">100%</span><button data-action="zoom-in" aria-label="放大">+</button><button data-action="fit" aria-label="适配全部节点">适配</button></div>
+  </main>
+  <aside class="side-panel">
+    <section><div class="panel-title"><span>任务记录</span><span id="taskCount" class="count">0</span></div><div id="taskList" class="task-list"><div class="muted">运行生成节点后，任务状态会显示在这里。</div></div></section>
+    <section class="contract"><div class="panel-title">P0 验收状态</div><div class="check-row"><span id="checkNodes" class="check">○</span>三类节点与世界坐标</div><div class="check-row"><span id="checkLinks" class="check">○</span>图片/提示词 → 生成节点</div><div class="check-row"><span id="checkAsync" class="check">○</span>异步 Mock、失败与重试</div><div class="check-row"><span id="checkPersist" class="check">○</span>刷新恢复与版本信息</div></section>
+    <section class="tip"><strong>现场路径</strong><p>加载示例 → 拖动节点/滚轮缩放 → 修改提示词 → 运行生成 → 刷新页面。输入 <code>#fail</code> 可稳定触发失败，再点击重试。</p></section>
+  </aside>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/static/js/interview-canvas.js?v=2026.08.28.1790590140"></script>
+</body>
+</html>

@@ -11690,6 +11690,11 @@ async def build_chat_text_reply(payload, conversation):
 async def index():
     return static_html_response("index.html")
 
+@app.get("/interview")
+async def interview_canvas():
+    """题目验收专用入口：不依赖真实模型或 API Key 的本地 Mock 画布。"""
+    return static_html_response("interview-canvas.html")
+
 @app.get("/api/view")
 def view_image(filename: str, type: str = "input", subfolder: str = ""):
     # 先按原逻辑去各 ComfyUI 后端找
