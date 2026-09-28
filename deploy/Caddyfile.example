@@ -1,0 +1,7 @@
+# Add this site block to the existing /etc/caddy/Caddyfile.
+# This intentionally allows public access. Add basicauth or another access
+# control before using it for a private or quota-sensitive deployment.
+canvas.metal-anchor.site {
+    encode gzip
+    reverse_proxy 127.0.0.1:30011
+}
